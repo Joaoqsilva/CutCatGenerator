@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/btn.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>CUT CAT GENERATOR</title>
+</head>
+
+<body>
+    <button class="learn-more">Generate a Cat</button>
+
+    <div id="card-cat"></div>
+    <div id="card-cat2"></div>
+    <div id="card-cat3"></div> <!-- New section -->
+
+    <script>
+        const url = "https://api.thecatapi.com/v1/images/search";
+        const section = document.querySelector("#card-cat");
+        const section2 = document.querySelector("#card-cat2");
+        const section3 = document.querySelector("#card-cat3"); // New section
+        const btn = document.querySelector(".learn-more");
+
+        btn.addEventListener("click", generateRandomCat);
+
+        async function generateRandomCat() {
+            section.innerHTML = "";
+            section2.innerHTML = "";
+            section3.innerHTML = ""; // Clear new section
+
+            try {
+                const response = await fetch(url);
+                const json = await response.json();
+                console.log("Json:", json);
+
+                const photo = json[0].url;
+                const img = document.createElement('img');
+                img.src = photo;
+                section.appendChild(img);
+
+                const response2 = await fetch(url);
+                const json2 = await response2.json();
+                console.log("Json2:", json2);
+
+                const photo2 = json2[0].url;
+                const img2 = document.createElement('img');
+                img2.src = photo2;
+                section2.appendChild(img2);
+
+                const response3 = await fetch(url); // New request for the third section
+                const json3 = await response3.json();
+                console.log("Json3:", json3);
+
+                const photo3 = json3[0].url;
+                const img3 = document.createElement('img');
+                img3.src = photo3;
+                section3.appendChild(img3);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>
