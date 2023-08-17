@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+}
+ img{
+    background: url(//imgs/close-vertical-de-um-lindo-gato-europeu-de-pelo-curto.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    width: 35vw;
+    height: 100vh;
+}
